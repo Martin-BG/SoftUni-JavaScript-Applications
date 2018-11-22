@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bus Schedule</title>
+    <style>
+        #schedule {
+            text-align: center;
+            width: 400px;
+        }
+
+        input {
+            width: 120px;
+        }
+
+        #info {
+            background-color: aquamarine;
+            border: 1px solid black;
+            margin: 0.25em;
+        }
+
+        .info {
+            font-size: 1.5em;
+            padding: 0.25em;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+</head>
+<body>
+<div id="schedule">
+    <div id="info"><span class="info">Not Connected</span></div>
+    <div id="controls">
+        <input id="depart" onclick="result.depart()" type="button" value="Depart">
+        <input disabled="true" id="arrive" onclick="result.arrive()" type="button" value="Arrive">
+    </div>
+</div>
+<script>
+  function solve() {
+    const baseUrl = 'https://judgetests.firebaseio.com/schedule/';
+    const $depart = $('#depart');
+    const $arrive = $('#arrive');
+    const $info = $('span.info');
+    let currentId = 'depot';
+    let currentStopName;
+
+    const depart = () => {
+      $.get(`${baseUrl}${currentId}.json`)
+        .then((res) => {
+          $depart.attr('disabled', true);
+          $arrive.attr('disabled', false);
+          currentStopName = res.name;
+          $info.text(`Next stop ${currentStopName}`);
+          currentId = res.next;
+        })
+        .catch((err) => {
+          $info.text('Error');
+          $depart.attr('disabled', true);
+          $arrive.attr('disabled', true);
+        });
+    };
+
+    const arrive = () => {
+      $info.text(`Arriving ${currentStopName}`);
+      $depart.attr('disabled', false);
+      $arrive.attr('disabled', true);
+    };
+
+    return {
+      depart,
+      arrive
+    };
+  }
+
+  let result = solve();
+</script>
+</body>
+</html>
