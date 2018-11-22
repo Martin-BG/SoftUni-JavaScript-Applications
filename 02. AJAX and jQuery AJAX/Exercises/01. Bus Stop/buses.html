@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bus Stop</title>
+    <style>
+        #stopName {
+            font-size: 1.5em;
+            font-weight: 400;
+            padding: 0.25em;
+            background-color: aquamarine;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+</head>
+<body>
+<div id="stopInfo" style="width:20em">
+    <div>
+        <label for="stopId">Stop ID: </label>
+        <input id="stopId" type="text">
+        <input id="submit" onclick="getInfo()" type="button" value="Check"></div>
+    <div id="result">
+        <div id="stopName"></div>
+        <ul id="buses"></ul>
+    </div>
+</div>
+<script>
+  function getInfo() {
+    const baseUrl = 'https://judgetests.firebaseio.com/businfo/';
+    const $stopId = $('#stopId');
+    const $stopName = $('#stopName');
+    const $buses = $('#buses');
+    const id = $stopId.val();
+
+    $stopId.val('');
+    $stopName.text('');
+    $buses.empty();
+
+    $.get(`${baseUrl}${id}.json`)
+      .then(displayStopInfo)
+      .catch(displayError);
+
+    /*
+        $.ajax({
+          url:`${baseUrl}${id}.json`,
+          success:displayStopInfo,
+          error:displayError
+        });
+    */
+
+    function displayStopInfo(data) {
+      $stopName.text(data.name);
+      const buses = Object.keys(data.buses);
+      for (const bus of buses) {
+        const li = $('<li>').text(`Bus ${bus} arrives in ${data['buses'][bus]} minutes`);
+        $buses.append(li);
+      }
+    }
+
+    function displayError(err) {
+      $stopName.text('Error');
+      $buses.empty();
+      $stopId.val('');
+    }
+  }
+</script>
+</body>
+</html>
