@@ -16,14 +16,17 @@ $(function () {
   }
 
   function displayContacts(contacts) {
-    for (let key in contacts) {
-      let person = contacts[key]['person'];
-      let phone = contacts[key]['phone'];
-      let li = $('<li>');
+    const keys = Object.keys(contacts);
+    for (const key of keys) {
+      const person = contacts[key]['person'];
+      const phone = contacts[key]['phone'];
+      const li = $('<li>');
       li.text(person + ': ' + phone + ' ');
       $phonebook.append(li);
-      li.append($('<button>Delete</button>')
-        .click(deleteContact.bind(this, key)));
+      li.append(
+        $('<button>Delete</button>')
+          .on('click', deleteContact.bind(this, key))
+      );
     }
   }
 
