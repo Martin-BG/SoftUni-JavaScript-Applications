@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Github Commits</title>
+</head>
+<body>
+GitHub username:
+<input id="username" type="text" value="nakov"/> <br>
+Repo: <input id="repo" type="text" value="nakov.io.cin"/>
+<button onclick="loadCommits()">Load Commits</button>
+<ul id="commits"></ul>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="commits.js"></script>
+<script>
+  loadCommits();
+</script>
+</body>
+</html>
