@@ -49,41 +49,68 @@ function attachEvents() {
         </div>
       `);
 
+    const savePlayer = async () => {
+      await remote(HttpMethod.PUT, baseUrl + player._id, JSON.stringify(player))
+        .catch(error);
+
+      clearInterval(document.getElementById('canvas').intervalId);
+
+      $canvas.hide();
+      $save.hide();
+      $reload.hide();
+
+      $save.off('click');
+      $reload.off('click');
+
+      $(html).find('.money').text(player.money);
+      $(html).find('.bullets').text(player.bullets);
+
+      $(html).find('.delete').prop('disabled', false);
+      $('.play').prop('disabled', false);
+    };
+
+    const reloadGun = async () => {
+      player.money -= 60;
+      player.bullets = 6;
+
+      await remote(HttpMethod.PUT, baseUrl + player._id, JSON.stringify(player))
+        .then(() => {
+          $(html).find('.money').text(player.money);
+          $(html).find('.bullets').text(player.bullets);
+        })
+        .catch(error);
+    };
+
+    const startGame = async () => {
+      await $save.click();
+
+      $(html).find('.delete').prop('disabled', true);
+      $('.play').prop('disabled', true);
+
+      $save.on('click', null, player, savePlayer);
+
+      $reload.on('click', null, player, reloadGun);
+
+      $canvas.show();
+      $save.show();
+      $reload.show();
+
+      loadCanvas(player);
+    };
+
+    const deletePlayer = () => {
+      remote(HttpMethod.DELETE, `${baseUrl}${player._id}`)
+        .then($(html).remove())
+        .catch(error);
+    };
+
     $(html)
       .find('.play')
-      .on('click', async () => {
-        await $save.click();
-
-        $save.on('click', null, player, async () => {
-          await remote(HttpMethod.PUT, baseUrl + player._id, JSON.stringify(player))
-            .catch(error);
-          clearInterval(document.getElementById('canvas').intervalId);
-          $canvas.hide();
-          $save.hide();
-          $reload.hide();
-          remote().then(initPlayers).catch(error);
-        });
-
-        $reload.on('click', null, player, async () => {
-          player.money -= 60;
-          player.bullets = 6;
-          await remote(HttpMethod.PUT, baseUrl + player._id, JSON.stringify(player))
-            .catch(error);
-        });
-
-        $canvas.show();
-        $save.show();
-        $reload.show();
-        loadCanvas(player);
-      });
+      .on('click', startGame);
 
     $(html)
       .find('.delete')
-      .on('click', () => {
-        remote(HttpMethod.DELETE, `${baseUrl}${player._id}`)
-          .then($(html).remove())
-          .catch(error);
-      });
+      .on('click', deletePlayer);
 
     return html;
   };
@@ -112,7 +139,6 @@ function attachEvents() {
   };
 
   $addPlayerBtn.on('click', addPlayer);
-  $save.on('click', () => {});
 
   initPlayers();
 }
