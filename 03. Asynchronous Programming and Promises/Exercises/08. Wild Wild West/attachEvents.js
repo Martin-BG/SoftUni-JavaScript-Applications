@@ -1,7 +1,7 @@
 function attachEvents() {
   const baseUrl = 'https://baas.kinvey.com/appdata/kid_BJeMLiQAQ/players/';
-  const HttpMethod = {'GET': 'GET', 'POST': 'POST', 'PUT': 'PUT', 'DELETE': 'DELETE'};
-  const Authorization = 'Basic ' + btoa('guest:guest');
+  const httpMethod = {'GET': 'GET', 'POST': 'POST', 'PUT': 'PUT', 'DELETE': 'DELETE'};
+  const authorization = 'Basic ' + btoa('guest:guest');
 
   const $players = $('#players');
   const $canvas = $('#canvas');
@@ -14,16 +14,16 @@ function attachEvents() {
     console.log(err);
   };
 
-  const remote = (method = HttpMethod.GET,
+  const remote = (method = httpMethod.GET,
                   url = baseUrl,
                   data) => {
-    const contentType = (method === HttpMethod.GET) ?
+    const contentType = (method === httpMethod.GET) ?
       'application/x-www-form-urlencoded; charset=UTF-8' : 'application/json';
     return $.ajax({
         method,
         url,
         data,
-        headers: {Authorization},
+      headers: {Authorization: authorization},
         contentType
       }
     );
@@ -50,7 +50,7 @@ function attachEvents() {
       `);
 
     const savePlayer = async () => {
-      await remote(HttpMethod.PUT, baseUrl + player._id, JSON.stringify(player))
+      await remote(httpMethod.PUT, baseUrl + player._id, JSON.stringify(player))
         .catch(error);
 
       clearInterval(document.getElementById('canvas').intervalId);
@@ -73,7 +73,7 @@ function attachEvents() {
       player.money -= 60;
       player.bullets = 6;
 
-      await remote(HttpMethod.PUT, baseUrl + player._id, JSON.stringify(player))
+      await remote(httpMethod.PUT, baseUrl + player._id, JSON.stringify(player))
         .then(() => {
           $(html).find('.money').text(player.money);
           $(html).find('.bullets').text(player.bullets);
@@ -99,7 +99,7 @@ function attachEvents() {
     };
 
     const deletePlayer = () => {
-      remote(HttpMethod.DELETE, `${baseUrl}${player._id}`)
+      remote(httpMethod.DELETE, `${baseUrl}${player._id}`)
         .then($(html).remove())
         .catch(error);
     };
@@ -119,7 +119,7 @@ function attachEvents() {
     const name = $addPlayerName.val().trim();
     if (name && name.length) {
       let player = {name, 'money': 500, 'bullets': 6};
-      await remote(HttpMethod.POST, baseUrl, JSON.stringify(player))
+      await remote(httpMethod.POST, baseUrl, JSON.stringify(player))
         .then((data) => player = data)
         .catch(error);
       $addPlayerName.val('');
