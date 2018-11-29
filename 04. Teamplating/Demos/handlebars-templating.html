@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Handlebars Templating Demo</title>
+</head>
+<body>
+<h1>Rendering Demos</h1>
+<ul id="container"></ul>
+<hr>
+<div id="weather"></div>
+<div id="htmlEscaped"></div>
+<div id="htmlNotEscaped"></div>
+<div id="helpersDemo"></div>
+</body>
+<script crossorigin="anonymous"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+<script crossorigin="anonymous"
+        integrity="sha256-qlku5J3WO/ehJpgXYoJWC2px3+bZquKChi4oIWrAKoI="
+        src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.min.js"></script>
+
+<script id="template" type="text/x-handlebars-template">
+    <li>Name: {{name}}, Age : {{age}}</li>
+</script>
+
+<script id="templateCollection" type="text/x-handlebars-template">
+    {{#people}}
+    <li>Name: {{name}}, Age : {{age}}</li>
+    {{/people}}
+</script>
+
+<script id="templateEach" type="text/x-handlebars-template">
+    {{#each people}}
+    <li>Name: {{name}}, Age : {{age}}</li>
+    {{/each}}
+</script>
+
+<script id="templateEachConditional" type="text/x-handlebars-template">
+    {{#if people}}
+    {{#each people}}
+    <li>Name: {{name}}, Age : {{age}}</li>
+    {{/each}}
+    {{else}}
+    <li>Invalid context!</li>
+    {{/if}}
+</script>
+
+<script id="templateConditional" type="text/x-handlebars-template">
+    <hr>
+    <h1>Conditionals Demo</h1>
+    #if:
+    {{#if sunny}}
+    The sky is clear
+    {{else}}
+    The sky is overcast
+    {{/if}}
+    <br/>
+    #unless:
+    {{#unless sunny}}
+    It is not sunny
+    {{else}}
+    It is sunny
+    {{/unless}}
+    <hr>
+</script>
+
+<script id="partialTemplate" type="text/x-handlebars-template">
+    <li>Name: {{name}}, Age : {{age}}</li>
+</script>
+
+<script id="partialTemplateEach" type="text/x-handlebars-template">
+    {{#each people}}
+    {{> item}}
+    {{/each}}
+</script>
+
+<script>
+  const data = {
+    'people': [
+      {name: 'Pesho', age: 20},
+      {name: 'Gosho', age: 23},
+      {name: 'Minch', age: 22},
+    ]
+  };
+
+  const weather = {sunny: false};
+
+  const $container = $('#container');
+
+  $(() => { // executed on completely page load
+    renderingDemos();
+
+    conditionalsDemo();
+
+    partialDemo();
+
+    htmlEscapedDemo();
+
+    htmlNotEscapedDemo();
+
+    helpersDemo();
+  });
+
+  function renderingDemos() {
+    $container.append('<strong>Render single element one by one:</strong>');
+    const source = $('#template').html();
+    const template = Handlebars.compile(source); // template is a function, returns html
+    data.people.forEach((item) => {
+      $container.append(template(item));  //
+    });
+
+    $container.append('<strong>Render all elements in collection:</strong>');
+    const templateCollection = Handlebars.compile($('#templateCollection').html());
+    $container.append(templateCollection(data));
+
+    $container.append('<strong>Render collection using #each:</strong>');
+    $container.append(Handlebars.compile($('#templateEach').html())(data));
+  }
+
+  function conditionalsDemo() {
+    $('#weather').append(Handlebars.compile($('#templateConditional').html())(weather));
+
+    $container.append('<strong>Render elements using #each if valid context, else display error (valid):</strong>');
+    const $templateEachConditional = $('#templateEachConditional');
+    $container.append(Handlebars.compile($templateEachConditional.html())(data));
+    $container.append('<strong>Render elements using #each if valid context, else display error (invalid):</strong>');
+    $container.append(Handlebars.compile($templateEachConditional.html())(weather));
+  }
+
+  function partialDemo() {
+    const partial = $('#partialTemplate').html();
+    Handlebars.registerPartial('item', partial);
+
+    const source = $('#partialTemplateEach').html();
+    const template = Handlebars.compile(source);
+
+    $container.append('<strong>Render using partial:</strong>');
+    $container.append(template(data));
+  }
+
+  function htmlNotEscapedDemo() {
+    const data = {
+      title: '<h1>Title</h1>',
+      body: '<strong>HTML NOT escaped demo - use {{{...}}} </strong>'
+    };
+    const template = Handlebars.compile('<hr><div>{{{title}}}{{{body}}}</div><hr>');
+
+    $('#htmlEscaped').html(template(data));
+  }
+
+  function htmlEscapedDemo() {
+    const data = {
+      title: '<h1>Title</h1>',
+      body: '<strong>HTML escaped demo - use {{...}} (default)</strong>'
+    };
+    const template = Handlebars.compile('<hr><div>{{title}}{{body}}</div><hr>');
+
+    $('#htmlNotEscaped').html(template(data));
+  }
+
+  function helpersDemo() {
+    const data = {person: {name: 'Pesho', family: 'Peshev'}};
+
+    Handlebars.registerHelper('fullname', (person) => {
+      return `${person.name} ${person.family}`;
+    });
+
+    const template = Handlebars.compile('<hr><h3>Helpers Demo</h3><div>Full name: {{fullname person}}</div><hr>');
+
+    $('#helpersDemo').html(template(data));
+  }
+</script>
+</html>

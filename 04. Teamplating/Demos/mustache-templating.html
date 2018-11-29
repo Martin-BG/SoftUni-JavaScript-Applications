@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mustache Demo</title>
+</head>
+<body>
+<ul id="container"></ul>
+</body>
+<script crossorigin="anonymous"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.min.js"></script>
+
+<script id="template" type="text/x-tmpl-mustache">
+    <li>Name: {{name}}, Age : {{age}}</li>
+
+</script>
+
+<script id="templateCollection" type="text/x-tmpl-mustache">
+    {{#people}}
+        <li>Name: {{name}}, Age : {{age}}</li>
+    {{/people}}
+
+</script>
+
+<script>
+  const data = {
+    'people': [
+      {name: 'Pesho', age: 20},
+      {name: 'Gosho', age: 23},
+      {name: 'Minch', age: 22},
+    ]
+  };
+
+  $(() => { // executed on completely page load
+    const template = $('#template').html();
+    Mustache.parse(template);
+    data.people.forEach((item) => {
+      $('#container').append(Mustache.render(template, item));  // Render single element
+    });
+
+    // Render collection
+    const templateCollection = $('#templateCollection').html();
+    Mustache.parse(templateCollection);
+    $('#container').append(Mustache.render(templateCollection, data));
+  });
+</script>
+</html>

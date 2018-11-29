@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS Templating Demo</title>
+</head>
+<body>
+<ul id="container"></ul>
+</body>
+<script crossorigin="anonymous"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+  const data = [
+    {name: 'Pesho', age: 20},
+    {name: 'Gosho', age: 23},
+    {name: 'Minch', age: 22},
+  ];
+
+  function renderTemplate(data) {
+    return `<li>Name: ${data.name}, Age : ${data.age}</li>`;
+  }
+
+  $(() => { // executed on completely page load
+    data.forEach((item) => {
+      $('#container').append(renderTemplate(item));
+    });
+  });
+</script>
+</html>

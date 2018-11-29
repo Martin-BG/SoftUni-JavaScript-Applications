@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery loadTemplate Demo</title>
+</head>
+<body>
+<ul id="container"></ul>
+</body>
+<script crossorigin="anonymous"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+<script crossorigin="anonymous"
+        integrity="sha256-mF3k3rmuuGVi/6GhJ5atwMd7JsTsQhULB6GyLaFPrMU="
+        src="https://cdnjs.cloudflare.com/ajax/libs/jquery.loadtemplate/1.5.10/jquery.loadTemplate.min.js"></script>
+
+<script id="template" type="text/html">
+    <li>Name: <span data-content="name"></span>, Age : <span data-content="age"></span></li>
+</script>
+
+<script>
+  const data = [
+    {name: 'Pesho', age: 20},
+    {name: 'Gosho', age: 23},
+    {name: 'Minch', age: 22},
+  ];
+
+  $(() => { // executed on completely page load
+    $('#container').loadTemplate($('#template'), data); // Renders all elements in collection
+  });
+</script>
+</html>
