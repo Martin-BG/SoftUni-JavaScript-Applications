@@ -3,19 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <title>List Town</title>
-    <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-    <script src="towns.js"></script>
 </head>
 <body>
+<label for="towns"></label>
 <input id="towns" type="text"/>
 <button id="btnLoadTowns">Load</button>
 <div id="root"></div>
 </body>
+<script crossorigin="anonymous"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+<script crossorigin="anonymous"
+        integrity="sha256-qlku5J3WO/ehJpgXYoJWC2px3+bZquKChi4oIWrAKoI="
+        src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.min.js"></script>
+
+<script src="towns.js"></script>
+
 <script>
   $(() => attachEvents());
 </script>
+
 <script id="towns-template" type="text/x-handlebars-template">
-    // TODO: Create the template here
+    {{#each towns}}
+    <li>{{.}}</li>
+    {{/each}}
 </script>
 </html>
