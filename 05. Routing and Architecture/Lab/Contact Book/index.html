@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact Book</title>
+    <link href="style/site.css" rel="stylesheet">
+    <link href="style/contact.css" rel="stylesheet">
+    <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
+    <script src="app.js"></script>-->
+</head>
+<body>
+
+<section id="welcome">
+    <div class="container centered">
+        <header>&#9993; Contact Book</header>
+        <div class="box">
+            <h1>Sign in</h1>
+            <div class="content">
+                <form id="login-form">
+                    <label for="username">Username</label>
+                    <input id="username" type="text">
+                    <label for="password">Password</label>
+                    <input id="password" type="password">
+                    <input type="submit" value="Login">
+                </form>
+                <div class="centered">
+                    <a href="#">Register</a>
+                </div>
+            </div>
+        </div>
+        <footer>Contact Book SPA &copy; 2017</footer>
+    </div>
+</section>
+
+<section id="register">
+    <div class="container centered">
+        <header>&#9993; Contact Book</header>
+        <div class="box">
+            <h1>Register</h1>
+            <div class="content">
+                <form id="register-form">
+                    <label for="newUsername">Username</label>
+                    <input id="newUsername" type="text">
+                    <label for="newPassword">Password</label>
+                    <input id="newPassword" type="password">
+                    <label for="newPassRep">Repeat Password</label>
+                    <input id="newPassRep" type="password">
+                    <input type="submit" value="Register">
+                </form>
+            </div>
+        </div>
+        <footer>Contact Book SPA &copy; 2017</footer>
+    </div>
+</section>
+
+<section id="contacts">
+    <div class="container">
+        <header>&#9993; Contact Book</header>
+        <div class="box-large" id="book">
+            <div id="list">
+                <h1>Contacts</h1>
+                <div class="content">
+                    <div class="contact" data-id="id">
+                        <span class="avatar small">&#9787;</span>
+                        <span class="title">Ivan Ivanov</span>
+                    </div>
+
+                    <div class="contact" data-id="id">
+                        <span class="avatar small">&#9787;</span>
+                        <span class="title">Jordan Kirov</span>
+                    </div>
+
+                    <div class="contact" data-id="id">
+                        <span class="avatar small">&#9787;</span>
+                        <span class="title">Maria Petrova</span>
+                    </div>
+                </div>
+            </div>
+            <div id="details">
+                <h1>Details</h1>
+                <div class="content">
+                    <div class="info">
+                        <div class="col">
+                            <span class="avatar">&#9787;</span>
+                        </div>
+                        <div class="col">
+                            <span class="name">Ivan</span>
+                            <span class="name">Ivanov</span>
+                        </div>
+                    </div>
+                    <div class="info">
+                        <span class="info-line">&phone; 0887 123 456</span>
+                        <span class="info-line">&#9993; i.ivanov@gmail.com</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer>Contact Book SPA &copy; 2017</footer>
+    </div>
+</section>
+
+<section id="profile">
+    <div class="container">
+        <header>&#9993; Contact Book</header>
+        <div class="box-large">
+            <h1>My Profile</h1>
+            <div class="content">
+                <div class="info">
+                    <div class="col centered">
+                        <span class="avatar">&#9787;</span>
+                        <button>Change</button>
+                    </div>
+                    <div class="col">
+                        <form class="profile-editor">
+                            <label>First name:</label><input type="text" value="Ivan"><br>
+                            <label>Last name:</label><input type="text" value="Ivanov"><br>
+                            <label>Phone:</label><input type="text" value="0887 123 456"><br>
+                            <label>E-mail:</label><input type="text" value="i.ivanov@gmail.com"><br>
+                            <input type="submit" value="Save changes">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer>Contact Book SPA &copy; 2017</footer>
+    </div>
+</section>
+
+</body>
+</html>
