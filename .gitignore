@@ -6,6 +6,9 @@
 *.7z
 *.rar
 
+### node_modues ###
+**/node_modules/
+
 ### IntelliJ IDEA ###
 **/out/
 **/target/
