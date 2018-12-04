@@ -3,130 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title>Http Status Cats</title>
-    <link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-    <script crossorigin="anonymous" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-            src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="../node_modules/handlebars/dist/handlebars.js"></script>
-    <script src="catSeeder.js"></script>
+    <link crossorigin="anonymous"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+          rel="stylesheet">
 </head>
 <body>
-<div id="allCats">
-    <div class="card col-md-4">
-        <img alt="Card image cap" class="card-img-center" height="250" src="images/cat100.jpg" width="250">
-        <div class="card-block">
-            <button class="btn btn-primary">Show status code</button>
-            <div id="100" style="display: none">
-                <h4 class="card-title">Status Code: 100</h4>
-                <p class="card-text">Continue</p>
-            </div>
-        </div>
-    </div>
-    <div class="card col-md-4">
-        <img alt="Card image cap" class="card-img-center" height="250" src="images/cat200.jpg" width="250">
-        <div class="card-block">
-            <button class="btn btn-primary">Show status code</button>
-            <div id="200" style="display: none">
-                <h4 class="card-title">Status Code: 200</h4>
-                <p class="card-text">Ok</p>
-            </div>
-        </div>
-    </div>
-    <div class="card col-md-4">
-        <img alt="Card image cap" class="card-img-center" height="250" src="images/cat204.jpg" width="250">
-        <div class="card-block">
-            <button class="btn btn-primary">Show status code</button>
-            <div id="204" style="display: none">
-                <h4 class="card-title">Status Code: 204</h4>
-                <p class="card-text">No content</p>
-            </div>
-        </div>
-    </div>
-    <div class="card col-md-4">
-        <img alt="Card image cap" class="card-img-center" height="250" src="images/cat301.jpg" width="250">
-        <div class="card-block">
-            <button class="btn btn-primary">Show status code</button>
-            <div id="301" style="display: none">
-                <h4 class="card-title">Status Code: 301</h4>
-                <p class="card-text">Moved permanently</p>
-            </div>
-        </div>
-    </div>
-    <div class="card col-md-4">
-        <img alt="Card image cap" class="card-img-center" height="250" src="images/cat304.jpg" width="250">
-        <div class="card-block">
-            <button class="btn btn-primary">Show status code</button>
-            <div id="304" style="display: none">
-                <h4 class="card-title">Status Code: 304</h4>
-                <p class="card-text">Not modified</p>
-            </div>
-        </div>
-    </div>
-    <div class="card col-md-4">
-        <img alt="Card image cap" class="card-img-center" height="250" src="images/cat400.jpg" width="250">
-        <div class="card-block">
-            <button class="btn btn-primary">Show status code</button>
-            <div id="400" style="display: none">
-                <h4 class="card-title">Status Code: 400</h4>
-                <p class="card-text">Bad request</p>
-            </div>
-        </div>
-    </div>
-    <div class="card col-md-4">
-        <img alt="Card image cap" class="card-img-center" height="250" src="images/cat404.jpg" width="250">
-        <div class="card-block">
-            <button class="btn btn-primary">Show status code</button>
-            <div id="404" style="display: none">
-                <h4 class="card-title">Status Code: 404</h4>
-                <p class="card-text">Not Found</p>
-            </div>
-        </div>
-    </div>
-    <div class="card col-md-4">
-        <img alt="Card image cap" class="card-img-center" height="250" src="images/cat406.jpg" width="250">
-        <div class="card-block">
-            <button class="btn btn-primary">Show status code</button>
-            <div id="406" style="display: none">
-                <h4 class="card-title">Status Code: 406</h4>
-                <p class="card-text">Not Acceptable</p>
-            </div>
-        </div>
-    </div>
-    <div class="card col-md-4">
-        <img alt="Card image cap" class="card-img-center" height="250" src="images/cat410.jpg" width="250">
-        <div class="card-block">
-            <button class="btn btn-primary">Show status code</button>
-            <div id="410" style="display: none">
-                <h4 class="card-title">Status Code: 410</h4>
-                <p class="card-text">Gone</p>
-            </div>
-        </div>
-    </div>
-    <div class="card col-md-4">
-        <img alt="Card image cap" class="card-img-center" height="250" src="images/cat500.jpg" width="250">
-        <div class="card-block">
-            <button class="btn btn-primary">Show status code</button>
-            <div id="500" style="display: none">
-                <h4 class="card-title">Status Code: 500</h4>
-                <p class="card-text">Internal Server Error</p>
-            </div>
-        </div>
-    </div>
-    <div class="card col-md-4">
-        <img alt="Card image cap" class="card-img-center" height="250" src="images/cat511.jpg" width="250">
-        <div class="card-block">
-            <button class="btn btn-primary">Show status code</button>
-            <div id="511" style="display: none">
-                <h4 class="card-title">Status Code: 511</h4>
-                <p class="card-text">Network Authentication Required</p>
-            </div>
-        </div>
-    </div>
-</div>
-<script id="cat-template" type="text/x-handlebars-template">
-    // TODO: Create template
-</script>
+<div id="allCats"></div>
+
+<script crossorigin="anonymous"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script crossorigin="anonymous"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script crossorigin="anonymous"
+        integrity="sha256-qlku5J3WO/ehJpgXYoJWC2px3+bZquKChi4oIWrAKoI="
+        src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.min.js"></script>
+<script src="catSeeder.js"></script>
 <script src="template.js"></script>
 </body>
 </html>
