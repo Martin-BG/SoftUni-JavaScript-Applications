@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <link href="lib/style/bootstrap.min.css" rel="stylesheet"/>
+    <title>Furniture System</title>
+</head>
+
+<body>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Мебели</a>
+    <button aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"
+            data-target="#navbarCollapse"
+            data-toggle="collapse" type="button">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#/">Начало</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#/furniture/create">Нова мебел</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Disabled</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav pull-right">
+            <li class="nav-item"><a class="nav-link" href="#/login" id="login">Вход</a></li>
+            <li class="nav-item"><a class="nav-link" href="#/register" id="register">Регистрация</a></li>
+            <li class="nav-item"><a class="nav-link d-none" href="#/logout" id="logout">Изход</a></li>
+        </ul>
+    </div>
+</nav>
+<section role="main">
+    <div class="container" id="container"></div>
+</section>
+<script src="lib/jquery.min.js"></script>
+<script src="lib/bootstrap.min.js"></script>
+<script src="lib/handlebars.min.js"></script>
+<script src="lib/sammy.min.js"></script>
+<script src="lib/sammy.handlebars.min.js"></script>
+<script src="helpers/storage.js"></script>
+<script src="helpers/requester.js"></script>
+<script src="models/userModel.js"></script>
+<script src="models/furnitureModel.js"></script>
+<script src="controllers/home.js"></script>
+<script src="controllers/user.js"></script>
+<script src="controllers/furniture.js"></script>
+<script src="app.js"></script>
+</body>
+
+</html>
