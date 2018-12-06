@@ -1,4 +1,4 @@
-let user = (() => {
+const user = (() => {
 
   // Saves username/id/authtoken to local storage
   function saveSession(data) {

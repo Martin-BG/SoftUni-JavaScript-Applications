@@ -1,4 +1,4 @@
-let publication = (() => {
+const publication = (() => {
 
 // Load all ads
   async function all() {

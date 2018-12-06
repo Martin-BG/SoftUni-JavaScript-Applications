@@ -17,11 +17,11 @@ function startApp() {
   // Attach click events
   (() => {
     $('header').find('a[data-target]').click(navigateTo);
-    $('#buttonLoginUser').click(user.login);
-    $('#buttonRegisterUser').click(user.register);
-    $('#linkLogout').click(user.logout);
-    $('#buttonCreateAd').click(publication.create);
-    $('.notification').click(function () {
+    $('#buttonLoginUser').on('click', user.login);
+    $('#buttonRegisterUser').on('click', user.register);
+    $('#linkLogout').on('click', user.logout);
+    $('#buttonCreateAd').on('click', publication.create);
+    $('.notification').on('click', function () {
       $(this).hide();
     });
   })();
@@ -30,25 +30,6 @@ function startApp() {
     userLoggedIn();
   } else {
     userLoggedOut();
-  }
-
-  // Handle notifications
-  $(document).on({
-    ajaxStart: () => $('#loadingBox').show(),
-    ajaxStop: () => $('#loadingBox').fadeOut()
-  });
-
-  function showInfo(message) {
-    let infoBox = $('#infoBox');
-    infoBox.text(message);
-    infoBox.show();
-    setTimeout(() => infoBox.fadeOut(), 3000);
-  }
-
-  function showError(message) {
-    let errorBox = $('#errorBox');
-    errorBox.text(message);
-    errorBox.show();
   }
 
   function handleError(reason) {
