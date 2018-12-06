@@ -40,7 +40,7 @@ function startApp() {
 
     // Creates request object to kinvey
     function makeRequest(method, module, endpoint, auth) {
-      return req = {
+      return {
         method,
         url: baseUrl + module + '/' + appKey + '/' + endpoint,
         headers: {
