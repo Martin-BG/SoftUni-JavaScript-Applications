@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prodavachnik</title>
+    <script src="scripts/jquery-3.1.1.min.js"></script>
+    <script src="scripts/prodavachnik.js"></script>
+    <link href="styles/prodavachnik.css" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans" rel="stylesheet">
+</head>
+
+<body>
+<header class="menu" id="menu">
+    <a class="menu-item" href="#" id="linkHome">Home</a>
+    <a class="menu-item" href="#" id="linkLogin">Login</a>
+    <a class="menu-item" href="#" id="linkRegister">Register</a>
+    <a class="menu-item" href="#" id="linkListAds">List Advertisements</a>
+    <a class="menu-item" href="#" id="linkCreateAd">Create Advertisement</a>
+    <a class="menu-item" href="#" id="linkLogout">Logout</a>
+    <span class="menu-item" id="loggedInUser"></span>
+    <div></div>
+</header>
+
+<main>
+    <section class="loadingBox" id="loadingBox">Loading ...</section>
+
+    <section class="infoBox" id="infoBox">Info</section>
+
+    <section class="errorBox" id="errorBox">Error</section>
+
+    <section class="viewHome" id="viewHome">
+        <h1 class="title">Welcome</h1>
+        <p class="body-text">Welcome to our advertisement site.</p>
+    </section>
+
+    <section class="viewLogin" id="viewLogin">
+        <h1 class="titleForm">Please login</h1>
+        <form class="form" id="formLogin">
+            <div>Username:</div>
+            <div><input name="username" required type="text"/></div>
+            <div>Password:</div>
+            <div><input name="passwd" required type="password"/></div>
+            <div><input id="buttonLoginUser" type="button" value="Login"/></div>
+        </form>
+    </section>
+
+    <section class="viewRegister" id="viewRegister">
+        <h1 class="titleForm">Please register here</h1>
+        <form class="form" id="formRegister">
+            <div>Username:</div>
+            <div><input name="username" required type="text"/></div>
+            <div>Password:</div>
+            <div><input name="passwd" required type="password"/></div>
+            <div><input id="buttonRegisterUser" type="button" value="Register"/></div>
+        </form>
+    </section>
+
+    <section class="viewAds" id="viewAds">
+        <h1 class="titleForm">Advertisements</h1>
+        <div class="ads" id="ads">
+            <table>
+                <tr>
+                    <th>Title</th>
+                    <th>Publisher</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Date Published</th>
+                </tr>
+                <tr>
+                    <td>Ad title</td>
+                    <td>Ad author</td>
+                    <td>Ad description</td>
+                    <td>Price</td>
+                    <td>Date published</td>
+                    <td>
+                        <a href="#">[Delete]</a>
+                        <a href="#">[Edit]</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </section>
+
+    <section class="viewCreateAd" id="viewCreateAd">
+        <h1 class="titleForm">Create new Advertisement</h1>
+        <form class="form" id="formCreateAd">
+            <div>Title:</div>
+            <div><input name="title" required type="text"/></div>
+            <div>Description:</div>
+            <div><textarea name="description" required rows="10"></textarea></div>
+            <div>Date Published:</div>
+            <div><input name="datePublished" required type="date"/></div>
+            <div>Price:</div>
+            <div><input name="price" required step="0.01" type="number"/></div>
+            <div><input id="buttonCreateAd" type="button" value="Create"/></div>
+        </form>
+    </section>
+
+    <section class="viewEditAd" id="viewEditAd">
+        <h1 class="titleForm">Edit existing advertisement</h1>
+        <form class="form" id="formEditAd">
+            <div><input name="id" required type="hidden"/></div>
+            <div><input name="publisher" required type="hidden"/></div>
+            <div>Title:</div>
+            <div><input name="title" required type="text"/></div>
+            <div>Description:</div>
+            <div><textarea name="description" required rows="10"></textarea></div>
+            <div>Date Published:</div>
+            <div><input name="datePublished" required type="date"/></div>
+            <div>Price:</div>
+            <div><input name="price" required step="0.01" type="number"/></div>
+            <div><input id="buttonEditAd" type="button" value="Edit"/></div>
+        </form>
+    </section>
+    <script>
+      startApp();
+    </script>
+</main>
+<footer>Prodavachnik - Simple SPA Application</footer>
+</body>
+</html>
