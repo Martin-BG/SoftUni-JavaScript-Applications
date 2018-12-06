@@ -87,14 +87,6 @@ input {
     transition: .5s ease-in;
 }
 
-#infoBox, #errorBox, #loadingBox {
-    width: 100%;
-    color: white;
-    text-align: center;
-    padding: 15px;
-    transition: .5s ease-in;
-}
-
 input[type=text] {
     color: white;
     font: 16px 'Open Sans', sans-serif;
@@ -115,18 +107,6 @@ input[type=button]:hover {
     border-color: #00bbbb;
     transform: scale(1.1);
     cursor: pointer;
-}
-
-#loadingBox {
-    background: #7CB3E9;
-}
-
-#infoBox {
-    background: #393;
-}
-
-#errorBox {
-    background: #F50;
 }
 
 table {
@@ -161,5 +141,67 @@ footer {
     padding: 15px 10px;
     font-size: 0.8em;
     text-align: center;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
 
+#loadingBox {
+    background: #7CB3E9;
+}
+
+#infoBox {
+    background: #393;
+}
+
+#errorBox {
+    background: #F50;
+}
+
+.notification {
+    font-size: 1.5em;
+    float: right;
+    color: #ffffff;
+    padding: 0.5em 2em 0.5em 2em;
+    margin: 1em;
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    text-align: center;
+    border-radius: 3px;
+}
+
+#ads {
+    overflow: auto;
+}
+
+.ad-box {
+    width: 300px;
+    height: 350px;
+    border: 1px solid black;
+    text-align: center;
+    margin: 20px;
+    float: left;
+}
+
+.ad-title {
+    background: #333333;
+    color: #ffffff;
+    font-size: 1.5em;
+}
+
+.ad-control {
+    float: right;
+    border: 1px solid white;
+    width: 1.5em;
+    height: 1.5em;
+}
+
+.ad-box img {
+    height: auto;
+    width: auto;
+    max-width: 250px;
+    max-height: 250px;
 }

@@ -2,30 +2,31 @@
 <html>
 <head>
     <title>Prodavachnik</title>
-    <script src="scripts/jquery-3.1.1.min.js"></script>
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
     <script src="scripts/prodavachnik.js"></script>
+    <script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
     <link href="styles/prodavachnik.css" rel="stylesheet" type="text/css"/>
     <link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans" rel="stylesheet">
 </head>
 
 <body>
 <header class="menu" id="menu">
-    <a class="menu-item" href="#" id="linkHome">Home</a>
-    <a class="menu-item" href="#" id="linkLogin">Login</a>
-    <a class="menu-item" href="#" id="linkRegister">Register</a>
-    <a class="menu-item" href="#" id="linkListAds">List Advertisements</a>
-    <a class="menu-item" href="#" id="linkCreateAd">Create Advertisement</a>
+    <a class="menu-item" data-target="viewHome" href="#" id="linkHome">Home</a>
+    <a class="menu-item" data-target="viewLogin" href="#" id="linkLogin">Login</a>
+    <a class="menu-item" data-target="viewRegister" href="#" id="linkRegister">Register</a>
+    <a class="menu-item" data-target="viewAds" href="#" id="linkListAds">List Advertisements</a>
+    <a class="menu-item" data-target="viewCreateAd" href="#" id="linkCreateAd">Create Advertisement</a>
     <a class="menu-item" href="#" id="linkLogout">Logout</a>
     <span class="menu-item" id="loggedInUser"></span>
     <div></div>
 </header>
 
 <main>
-    <section class="loadingBox" id="loadingBox">Loading ...</section>
+    <section class="notification" id="loadingBox">Loading ...</section>
 
-    <section class="infoBox" id="infoBox">Info</section>
+    <section class="notification" id="infoBox">Info</section>
 
-    <section class="errorBox" id="errorBox">Error</section>
+    <section class="notification" id="errorBox">Error</section>
 
     <section class="viewHome" id="viewHome">
         <h1 class="title">Welcome</h1>
@@ -55,28 +56,8 @@
     </section>
 
     <section class="viewAds" id="viewAds">
-        <h1 class="titleForm">Advertisements</h1>
-        <div class="ads" id="ads">
-            <table>
-                <tr>
-                    <th>Title</th>
-                    <th>Publisher</th>
-                    <th>Description</th>
-                    <th>Price</th>
-                    <th>Date Published</th>
-                </tr>
-                <tr>
-                    <td>Ad title</td>
-                    <td>Ad author</td>
-                    <td>Ad description</td>
-                    <td>Price</td>
-                    <td>Date published</td>
-                    <td>
-                        <a href="#">[Delete]</a>
-                        <a href="#">[Edit]</a>
-                    </td>
-                </tr>
-            </table>
+        <div id="content">
+
         </div>
     </section>
 
@@ -87,10 +68,10 @@
             <div><input name="title" required type="text"/></div>
             <div>Description:</div>
             <div><textarea name="description" required rows="10"></textarea></div>
-            <div>Date Published:</div>
-            <div><input name="datePublished" required type="date"/></div>
             <div>Price:</div>
             <div><input name="price" required step="0.01" type="number"/></div>
+            <div>Image Url:</div>
+            <div><input name="imageUrl" type="text"/></div>
             <div><input id="buttonCreateAd" type="button" value="Create"/></div>
         </form>
     </section>
@@ -104,13 +85,14 @@
             <div><input name="title" required type="text"/></div>
             <div>Description:</div>
             <div><textarea name="description" required rows="10"></textarea></div>
-            <div>Date Published:</div>
-            <div><input name="datePublished" required type="date"/></div>
             <div>Price:</div>
             <div><input name="price" required step="0.01" type="number"/></div>
+            <div>Image Url:</div>
+            <div><input name="imageUrl" type="text"/></div>
             <div><input id="buttonEditAd" type="button" value="Edit"/></div>
         </form>
     </section>
+
     <script>
       startApp();
     </script>
