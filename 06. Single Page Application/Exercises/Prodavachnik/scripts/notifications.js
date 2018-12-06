@@ -1,25 +1,33 @@
 const notifications = (() => {
-// Handle notifications
+  const timeout = 3000;
+
+  const $loadingBox = $('#loadingBox');
+  const infoBox = $('#infoBox');
+  const errorBox = $('#errorBox');
+
   $(document).on({
-    ajaxStart: () => $('#loadingBox').show(),
-    ajaxStop: () => $('#loadingBox').fadeOut()
+    ajaxStart: () => $loadingBox.show(),
+    ajaxStop: () => $loadingBox.fadeOut()
   });
 
-  function showInfo(message) {
-    let infoBox = $('#infoBox');
+  const info = (message) => {
     infoBox.text(message);
     infoBox.show();
-    setTimeout(() => infoBox.fadeOut(), 3000);
-  }
+    setTimeout(() => infoBox.fadeOut(), timeout);
+  };
 
-  function showError(message) {
-    let errorBox = $('#errorBox');
+  const error = (message) => {
     errorBox.text(message);
     errorBox.show();
-  }
+  };
+
+  const handleError = (reason) => {
+    error(reason.responseJSON.description);
+  };
 
   return {
-    showInfo,
-    showError,
+    info,
+    error,
+    handleError
   };
 })();

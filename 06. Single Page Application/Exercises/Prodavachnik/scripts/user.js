@@ -1,57 +1,53 @@
 const user = (() => {
 
-  // Saves username/id/authtoken to local storage
-  function saveSession(data) {
+  const saveSession = (data) => {
     localStorage.setItem('username', data.username);
     localStorage.setItem('id', data._id);
     localStorage.setItem('authtoken', data._kmd.authtoken);
-    userLoggedIn();
-  }
+    view.logged();
+  };
 
-  // Logs in the user
-  async function login() {
-    let form = $('#formLogin');
-    let username = form.find('input[name="username"]').val();
-    let password = form.find('input[name="passwd"]').val();
-
-    try {
-      let response = await requester.post('user', 'login', 'basic', {username, password});
-      saveSession(response);
-      showView('viewAds');
-      showInfo('Successfully logged in!');
-    } catch (e) {
-      handleError(e);
-    }
-  }
-
-  // Register a user
-  async function register() {
-    let form = $('#formRegister');
-    let username = form.find('input[name="username"]').val();
-    let password = form.find('input[name="passwd"]').val();
+  const login = async () => {
+    const $form = $('#formLogin');
+    const username = $form.find('input[name="username"]').val();
+    const password = $form.find('input[name="passwd"]').val();
 
     try {
-      let response = await requester.post('user', '', 'basic', {username, password});
+      const response = await requester.post('user', 'login', 'basic', {username, password});
       saveSession(response);
-      showView('viewAds');
-      showInfo('Successfully registered!');
+      view.show('viewAds');
+      notifications.info('Successfully logged in!');
     } catch (e) {
-      handleError(e);
+      notifications.handleError(e);
     }
-  }
+  };
 
-  // Logout a user
-  async function logout() {
+  const register = async () => {
+    const $form = $('#formRegister');
+    const username = $form.find('input[name="username"]').val();
+    const password = $form.find('input[name="passwd"]').val();
+
+    try {
+      const response = await requester.post('user', '', 'basic', {username, password});
+      saveSession(response);
+      view.show('viewAds');
+      notifications.info('Successfully registered!');
+    } catch (e) {
+      notifications.handleError(e);
+    }
+  };
+
+  const logout = async () => {
     try {
       await requester.post('user', '_logout', 'kinvey', {authtoken: localStorage.getItem('authtoken')});
       localStorage.clear(); // Clears all session storage on logout
-      userLoggedOut();
-      showView('viewHome');
-      showInfo('Logout successful!');
+      view.anonymous();
+      view.show('viewHome');
+      notifications.info('Logout successful!');
     } catch (e) {
-      handleError(e);
+      notifications.handleError(e);
     }
-  }
+  };
 
   return {
     login,

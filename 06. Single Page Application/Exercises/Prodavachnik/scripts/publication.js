@@ -1,29 +1,75 @@
 const publication = (() => {
 
-// Load all ads
-  async function all() {
+  const all = async () => {
+    const $content = $('#content');
+    const ads = await requester.get('appdata', 'adverts');
+    ads.forEach(a => {
+      if (a._acl.creator === localStorage.getItem('id')) {
+        a.isAuthor = true;
+      }
+    });
+    const context = {ads};
+    const html = view.templates['catalog'](context);
+    $content.html(html);
+    $content.find('.edit').on('click', openEditAdd);
+    $content.find('.delete').on('click', remove);
+  };
 
-  }
+  const create = async () => {
+    const $form = $('#formCreateAd');
+    const title = $form.find('input[name="title"]').val().trim();
+    const description = $form.find('textarea[name="description"]').val().trim();
+    const price = $form.find('input[name="price"]').val().trim();
+    const imageUrl = $form.find('input[name="imageUrl"]').val().trim();
+    const publisher = localStorage.getItem('username');
 
-// Create an add
-  async function create() {
+    if (title.length === 0) {
+      notifications.error('Title can\'t be empty');
+      return;
+    }
 
-  }
+    if (price.length === 0) {
+      notifications.error('Price can\'t be empty');
+      return;
+    }
+
+    const newAdd = {
+      title,
+      description,
+      price,
+      imageUrl,
+      publisher
+    };
+
+    try {
+      await requester.post('appdata', 'adverts', '', newAdd);
+      view.show('viewAds');
+      notifications.info('Ad created!');
+      $form[0].reset();
+    } catch (error) {
+      notifications.handleError(error);
+    }
+  };
 
 // Delete an add
-  async function remove() {
-
-  }
+  const remove = async () => {
+    const $publication = $($(event.currentTarget).parent());
+    const id = $publication.attr('data-id');
+    requester.remove('appdata', 'adverts' + '/' + id, '');
+    $publication.parent().remove();
+  };
 
 // Edit an add
-  async function edit(id, publisher, date) {
-
-  }
+  const edit = async (id, publisher, date) => {
+    // TODO
+    console.log(event.currentTarget);
+  };
 
 // Open edit add view
-  async function openEditAdd() {
-
-  }
+  const openEditAdd = async () => {
+    // TODO
+    console.log(event.currentTarget);
+  };
 
   return {
     all,
