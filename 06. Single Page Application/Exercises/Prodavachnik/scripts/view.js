@@ -45,7 +45,7 @@ const view = (() => {
     $('#' + viewName).show();
 
     // Clear input fields of any forms in view
-    const $form = $(`#${viewName} > form`);
+    const $form = $(`#${viewName} form`);
     if ($form.length) {
       $form.each((i, f) => f.reset()); // === f.trigger('reset');
     }
