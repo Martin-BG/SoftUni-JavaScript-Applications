@@ -45,7 +45,7 @@ const publication = (() => {
       await requester.post('appdata', 'adverts', '', newAdd);
       view.show('viewAds');
       notifications.info('Ad created!');
-      $form[0].reset();
+      $form[0].reset(); // === $form.trigger('reset');
     } catch (error) {
       notifications.handleError(error);
     }

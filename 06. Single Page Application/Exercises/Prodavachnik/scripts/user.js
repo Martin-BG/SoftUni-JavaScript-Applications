@@ -23,6 +23,7 @@ const user = (() => {
       saveSession(response);
       view.show('viewAds');
       notifications.info('Successfully logged in!');
+      $form[0].reset(); // === $form.trigger('reset');
     } catch (e) {
       notifications.handleError(e);
     }
@@ -38,6 +39,7 @@ const user = (() => {
       saveSession(response);
       view.show('viewAds');
       notifications.info('Successfully registered!');
+      $form[0].reset(); // === $form.trigger('reset');
     } catch (e) {
       notifications.handleError(e);
     }
