@@ -1,11 +1,8 @@
 const view = (() => {
   const $loggedInUser = $('#loggedInUser');
   const $linkHome = $('#linkHome');
-  const $linkCreateAd = $('#linkCreateAd');
-  const $linkLogout = $('#linkLogout');
   const $linkLogin = $('#linkLogin');
   const $linkRegister = $('#linkRegister');
-  const $linkListAds = $('#linkListAds');
 
   const templates = {};
 
@@ -23,10 +20,9 @@ const view = (() => {
   const logged = () => {
     $loggedInUser.text(`Welcome ${localStorage.getItem('username')}`);
     $loggedInUser.show();
-    $linkHome.show();
-    $linkListAds.show();
-    $linkCreateAd.show();
-    $linkLogout.show();
+
+    $('#menu a').show();
+
     $linkLogin.hide();
     $linkRegister.hide();
   };
@@ -35,10 +31,10 @@ const view = (() => {
   const anonymous = () => {
     $loggedInUser.text('');
     $loggedInUser.hide();
+
+    $('#menu a').hide();
+
     $linkHome.show();
-    $linkListAds.hide();
-    $linkCreateAd.hide();
-    $linkLogout.hide();
     $linkLogin.show();
     $linkRegister.show();
   };
