@@ -7,7 +7,7 @@ const requester = (() => {
   const makeAuth = (type) => {
     return type === 'basic'
       ? 'Basic ' + btoa(appKey + ':' + appSecret)
-      : 'Kinvey ' + localStorage.getItem('authtoken');
+      : 'Kinvey ' + user.authtoken();
   };
 
   // Creates request object to kinvey

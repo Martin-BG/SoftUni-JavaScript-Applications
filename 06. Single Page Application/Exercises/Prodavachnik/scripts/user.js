@@ -1,9 +1,15 @@
 const user = (() => {
 
+  const storage = sessionStorage;
+
+  const name = () => storage.getItem('username');
+  const id = () => storage.getItem('id');
+  const authtoken = () => storage.getItem('authtoken');
+
   const saveSession = (data) => {
-    localStorage.setItem('username', data.username);
-    localStorage.setItem('id', data._id);
-    localStorage.setItem('authtoken', data._kmd.authtoken);
+    storage.setItem('username', data.username);
+    storage.setItem('id', data._id);
+    storage.setItem('authtoken', data._kmd.authtoken);
     view.logged();
   };
 
@@ -39,8 +45,8 @@ const user = (() => {
 
   const logout = async () => {
     try {
-      await requester.post('user', '_logout', 'kinvey', {authtoken: localStorage.getItem('authtoken')});
-      localStorage.clear(); // Clears all session storage on logout
+      await requester.post('user', '_logout', 'kinvey', {authtoken: authtoken()});
+      storage.clear(); // Clears all session storage on logout
       view.anonymous();
       view.show('viewHome');
       notifications.info('Logout successful!');
@@ -53,5 +59,8 @@ const user = (() => {
     login,
     register,
     logout,
+    name,
+    id,
+    authtoken
   };
 })();

@@ -4,7 +4,7 @@ const publication = (() => {
     const $content = $('#content');
     const ads = await requester.get('appdata', 'adverts');
     ads.forEach(a => {
-      if (a._acl.creator === localStorage.getItem('id')) {
+      if (a._acl.creator === user.id()) {
         a.isAuthor = true;
       }
     });
@@ -21,7 +21,7 @@ const publication = (() => {
     const description = $form.find('textarea[name="description"]').val().trim();
     const price = $form.find('input[name="price"]').val().trim();
     const imageUrl = $form.find('input[name="imageUrl"]').val().trim();
-    const publisher = localStorage.getItem('username');
+    const publisher = user.name();
 
     if (title.length === 0) {
       notifications.error('Title can\'t be empty');

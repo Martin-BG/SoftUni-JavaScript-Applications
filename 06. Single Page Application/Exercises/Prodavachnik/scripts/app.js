@@ -8,7 +8,7 @@ const startApp = () => {
 
   view.show('viewHome');
 
-  if (localStorage.getItem('authtoken') !== null) {
+  if (user.authtoken() !== null) {
     view.logged();
   } else {
     view.anonymous();

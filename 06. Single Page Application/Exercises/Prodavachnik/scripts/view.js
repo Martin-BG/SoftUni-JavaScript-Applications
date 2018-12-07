@@ -18,7 +18,7 @@ const view = (() => {
 
   // Shows only the correct links for a logged in user
   const logged = () => {
-    $loggedInUser.text(`Welcome ${localStorage.getItem('username')}`);
+    $loggedInUser.text(`Welcome ${user.name()}`);
     $loggedInUser.show();
 
     $('#menu a').show();
