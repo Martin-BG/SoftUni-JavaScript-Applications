@@ -21,8 +21,15 @@ const notifications = (() => {
     $errorBox.show();
   };
 
-  const handleError = (reason) => {
-    error(reason.responseJSON.description);
+  const handleError = (response) => {
+    let errorMsg = JSON.stringify(response);
+    if (response.readyState === 0) {
+      errorMsg = 'Cannot connect to server.';
+    }
+    if (response.responseJSON) {
+      errorMsg = response.responseJSON.description || response.responseJSON.error || 'Unknown error';
+    }
+    error(errorMsg);
   };
 
   return {
