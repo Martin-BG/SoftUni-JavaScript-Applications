@@ -4,9 +4,7 @@ const startApp = () => {
   $('#buttonRegisterUser').on('click', user.register);
   $('#linkLogout').on('click', user.logout);
   $('#buttonCreateAd').on('click', publication.create);
-  $('.notification').on('click', function () {
-    $(this).hide();
-  });
+  $('.notification').on('click', () => $(event.target).fadeOut());
 
   view.show('viewHome');
 
