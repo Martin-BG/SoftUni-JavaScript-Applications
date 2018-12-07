@@ -26,7 +26,7 @@ body {
 .menu-item {
     display: none;
     text-decoration: none;
-    padding: 5px 20px;
+    /*padding: 5px 20px;*/
     color: #fff;
     cursor: pointer;
     font-size: 16px;
@@ -40,6 +40,14 @@ body {
     color: #00bbbb;
 }
 
+#loggedInUser {
+    float: right;
+    cursor: unset;
+}
+
+#loggedInUser:hover {
+    color: #fff;
+}
 
 main > section {
     display: none;
@@ -164,7 +172,7 @@ footer {
     float: right;
     color: #ffffff;
     padding: 0.5em 2em 0.5em 2em;
-    margin: 1em;
+    margin: 2.5em;
     display: none;
     position: fixed;
     top: 0;
