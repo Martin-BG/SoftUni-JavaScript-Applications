@@ -29,7 +29,10 @@ const user = (() => {
     }
   };
 
-  const register = async () => {
+  const register = async (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+
     const $form = $('#formRegister');
     const username = $form.find('input[name="username"]').val();
     const password = $form.find('input[name="passwd"]').val();
