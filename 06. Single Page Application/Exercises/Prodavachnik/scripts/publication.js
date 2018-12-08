@@ -15,7 +15,10 @@ const publication = (() => {
     $content.find('.delete').on('click', remove);
   };
 
-  const create = async () => {
+  const create = async (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+
     const $form = $('#formCreateAd');
     const title = $form.find('input[name="title"]').val().trim();
     const description = $form.find('textarea[name="description"]').val().trim();
