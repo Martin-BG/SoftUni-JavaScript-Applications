@@ -1,6 +1,6 @@
 const startApp = () => {
   $('header').find('a[data-target]').on('click', view.navigateTo);
-  $('#buttonLoginUser').on('click', user.login);
+  $('#formLogin').on('submit', user.login);
   $('#formRegister').on('submit', user.register);
   $('#linkLogout').on('click', user.logout);
   $('#formCreateAd').on('submit', publication.create);

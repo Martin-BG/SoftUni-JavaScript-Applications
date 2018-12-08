@@ -13,13 +13,18 @@ const user = (() => {
     view.logged();
   };
 
-  const login = async () => {
+  const login = async (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+
     const $form = $('#formLogin');
-    const username = $form.find('input[name="username"]').val();
-    const password = $form.find('input[name="passwd"]').val();
+    const userData = {
+      username: $form.find('input[name="username"]').val(),
+      password: $form.find('input[name="passwd"]').val()
+    };
 
     try {
-      const response = await requester.post('user', 'login', 'basic', {username, password});
+      const response = await requester.post('user', 'login', 'basic', userData);
       saveSession(response);
       view.show('viewAds');
       notifications.info('Successfully logged in!');
@@ -34,11 +39,13 @@ const user = (() => {
     event.stopPropagation();
 
     const $form = $('#formRegister');
-    const username = $form.find('input[name="username"]').val();
-    const password = $form.find('input[name="passwd"]').val();
+    const userData = {
+      username: $form.find('input[name="username"]').val(),
+      password: $form.find('input[name="passwd"]').val()
+    };
 
     try {
-      const response = await requester.post('user', '', 'basic', {username, password});
+      const response = await requester.post('user', '', 'basic', userData);
       saveSession(response);
       view.show('viewAds');
       notifications.info('Successfully registered!');
