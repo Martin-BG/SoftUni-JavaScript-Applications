@@ -5,7 +5,10 @@ let teamsService = (() => {
   }
 
   function loadTeamDetails(teamId) {
-    return requester.get('appdata', 'teams/' + teamId, 'kinvey');
+    return Promise.all([
+      requester.get('appdata', 'teams/' + teamId, 'kinvey'),
+      requester.get('user', `?query={"teamId":"${teamId}"}`, 'kinvey')
+    ]);
   }
 
   function edit(teamId, name, description) {
