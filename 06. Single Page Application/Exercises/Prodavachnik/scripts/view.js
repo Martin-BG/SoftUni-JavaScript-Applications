@@ -44,10 +44,11 @@ const view = (() => {
     $('main > section').hide();
     $('#' + viewName).show();
 
-    // Clear input fields of any forms in view
-    const $form = $(`#${viewName} form`);
-    if ($form.length) {
-      $form.each((i, f) => f.reset()); // === f.trigger('reset');
+    if (viewName !== 'viewEditAd') {
+      const $form = $(`#${viewName} form`);
+      if ($form.length) { // Clear input fields
+        $form.each((i, f) => f.reset()); // === f.trigger('reset');
+      }
     }
 
     if (viewName === 'viewAds') {
