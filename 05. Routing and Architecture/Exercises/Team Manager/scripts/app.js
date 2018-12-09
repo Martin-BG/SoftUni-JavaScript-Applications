@@ -65,12 +65,12 @@ $(() => {
       const teamComment = ctx.params.comment;
 
       teamsService.createTeam(teamName, teamComment)
-        .then(function (data) {
-          teamsService.joinTeam(data._id)
+        .then(function (teamInfo) {
+          teamsService.joinTeam(teamInfo._id)
             .then((newData) => {
               auth.saveSession(newData);
               auth.showInfo(`Successfully created team ${teamName}`);
-              viewTeams(ctx);
+              ctx.redirect(`#/catalog/${teamInfo._id}`);
             });
         });
     }
