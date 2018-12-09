@@ -1,12 +1,15 @@
 let auth = (() => {
   function saveSession(userInfo) {
+    sessionStorage.clear();
     let userAuth = userInfo._kmd.authtoken;
     sessionStorage.setItem('authtoken', userAuth);
     let userId = userInfo._id;
     sessionStorage.setItem('userId', userId);
     let username = userInfo.username;
     sessionStorage.setItem('username', username);
-    sessionStorage.setItem('teamId', userInfo.teamId);
+    if (!!userInfo.teamId) {
+      sessionStorage.setItem('teamId', userInfo.teamId);
+    }
   }
 
   // user/login
