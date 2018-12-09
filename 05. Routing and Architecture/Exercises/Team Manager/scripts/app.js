@@ -72,7 +72,8 @@ $(() => {
               auth.showInfo(`Successfully created team ${teamName}`);
               ctx.redirect(`#/catalog/${teamInfo._id}`);
             });
-        });
+        })
+        .catch(auth.handleError);
     }
 
     function register(ctx) {
