@@ -114,12 +114,12 @@ $(() => {
 
     function viewEditTeam(ctx) {
       initAuthContext(ctx);
-      ctx.teamId = this.params.id;
+      ctx.teamId = ctx.params.id;
       teamsService.loadTeamDetails(ctx.teamId)
-        .then((teamInfo) => {
+        .then(([teamInfo, users]) => {
           ctx.name = teamInfo.name;
           ctx.comment = teamInfo.comment;
-          this.loadPartials({
+          ctx.loadPartials({
             header: './templates/common/header.hbs',
             footer: './templates/common/footer.hbs',
             editForm: './templates/edit/editForm.hbs'
