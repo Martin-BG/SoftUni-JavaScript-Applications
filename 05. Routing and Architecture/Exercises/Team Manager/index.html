@@ -6,23 +6,22 @@
     <link href="css/index.css" rel="stylesheet" type="text/css">
     <link href="css/team.css" rel="stylesheet" type="text/css">
     <link href="css/details.css" rel="stylesheet" type="text/css">
-    <link href="../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
-    <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
-    <script src="../node_modules/sammy/lib/min/sammy-0.7.6.min.js"></script>
-    <script src="../node_modules/sammy/lib/min/plugins/sammy.handlebars-0.7.6.min.js"></script>
-    <script src="scripts/models/requester.js"></script>
-    <script src="scripts/models/auth.js"></script>
-    <script src="scripts/models/teamsService.js"></script>
-    <script src="scripts/app.js"></script>
+    <link href="lib/styles/bootstrap.min.css" rel="stylesheet" type="text/css">
     <title>Team Managers App</title>
 </head>
 <body>
-<div class="notification" disabled id="infoBox"></div>
-<div class="notification" disabled id="errorBox"></div>
-<div id="main">
+<div class="notification" hidden id="infoBox"></div>
+<div class="notification" hidden id="errorBox"></div>
+<div id="main"></div>
 
-</div>
+<script src="lib/jquery.min.js"></script>
+<script src="lib/bootstrap.min.js"></script>
+<script src="lib/handlebars.min.js"></script>
+<script src="lib/sammy.min.js"></script>
+<script src="lib/sammy.handlebars.min.js"></script>
+<script src="scripts/models/requester.js"></script>
+<script src="scripts/models/auth.js"></script>
+<script src="scripts/models/teamsService.js"></script>
+<script src="scripts/app.js"></script>
 </body>
 </html>
