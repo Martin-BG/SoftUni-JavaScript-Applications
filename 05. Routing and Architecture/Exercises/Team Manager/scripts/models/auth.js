@@ -21,6 +21,10 @@ let auth = (() => {
 
   // user/register
   function register(username, password, repeatPassword) {
+    if (password !== repeatPassword) {
+      return Promise.reject({responseJSON: {description: 'Provided passwords do not match!'}});
+    }
+
     let userData = {
       username,
       password
