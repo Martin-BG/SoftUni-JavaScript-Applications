@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Car Tube</title>
+    <link href="styles/site.css" rel="stylesheet">
+    <link href="styles/welcome.css" rel="stylesheet">
+    <link href="styles/car-listings.css" rel="stylesheet">
+    <link href="styles/login-register.css" rel="stylesheet">
+    <link href="styles/my-listings.css" rel="stylesheet">
+    <link href="styles/footer.css" rel="stylesheet">
+    <link href="styles/navigation.css" rel="stylesheet">
+    <link href="styles/notifications.css" rel="stylesheet">
+    <link href="styles/listing-details.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div id="container">
+    <nav>
+        <a class="active" href="#">Home</a>
+        <a href="#">All Listings</a>
+        <a href="#">My Listings</a>
+        <a href="#">Create Listing</a>
+        <div id="profile">
+            <a>Welcome username</a>
+            <a href="#">logout</a>
+        </div>
+    </nav>
+
+    <div id="main">
+        <div id="welcome-container">
+            <h1>Welcome To Car Tube</h1>
+            <img alt="carIntro" src="images/finance-car.png">
+            <h2>Login or register to check out our listings or to make one</h2>
+            <div id="button-div">
+                <a class="button" href="#">Login</a>
+                <a class="button" href="#">Register</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="login">
+        <form action="#" method="post">
+            <div class="container">
+                <h1>Login</h1>
+                <p>Please enter your credentials.</p>
+                <hr>
+
+                <p>Username</p>
+                <input name="username" placeholder="Enter Username" type="text">
+
+                <p>Password</p>
+                <input name="password" placeholder="Enter Password" type="password">
+                <button class="registerbtn" type="submit">Login</button>
+            </div>
+
+            <div class="container signin">
+                <p>Dont have an account?
+                    <a href="#">Sign up</a>.</p>
+            </div>
+        </form>
+    </div>
+
+    <div id="register">
+        <form>
+            <div class="container">
+                <h1>Register</h1>
+                <p>Please fill in this form to create an account.</p>
+                <hr>
+
+                <p>Username</p>
+                <input name="username" placeholder="Enter Username" required type="text">
+
+                <p>Password</p>
+                <input name="password" placeholder="Enter Password" required type="password">
+
+                <p>Repeat Password</p>
+                <input name="repeatPass" placeholder="Repeat Password" required type="password">
+                <hr>
+
+                <button class="registerbtn" type="submit">Register</button>
+            </div>
+            <div class="container signin">
+                <p>Already have an account?
+                    <a href="#">Sign in</a>.</p>
+            </div>
+        </form>
+    </div>
+
+    <div id="car-listings">
+        <h1>Car Listings</h1>
+
+        <div id="listings">
+
+            <div class="listing">
+                <p>Audi a3 много запазено</p>
+                <img src="https://i.imgur.com/drIOsYl.jpg">
+                <h2>Brand: Audi</h2>
+                <div class="info">
+                    <div id="data-info">
+                        <h3>Seller: kunio</h3>
+                        <h3>Fuel: Gasoline</h3>
+                        <h3>Year: 1998</h3>
+                        <h3>Price: 2500 $</h3>
+                    </div>
+                    <div id="data-buttons">
+                        <ul>
+                            <li class="action">
+                                <a class="button-carDetails" href="#">Details</a>
+                            </li>
+                            <li class="action">
+                                <a class="button-carDetails" href="#">edit</a>
+                            </li>
+                            <li class="action">
+                                <a class="button-carDetails" href="#">delete</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+            <p class="no-cars">No cars in database.</p>
+
+        </div>
+    </div>
+
+    <div id="create-listing">
+        <form>
+            <div class="container">
+                <h1>Create Car Listing</h1>
+                <p>Please fill in this form to create an listing.</p>
+                <hr>
+
+                <p>Title</p>
+                <input name="title" placeholder="Enter Title" type="text">
+
+                <p>Description</p>
+                <input name="description" placeholder="Enter Description" type="text">
+
+                <p>Car Brand</p>
+                <input name="brand" placeholder="Enter Car Brand" type="text">
+
+                <p>Car Model</p>
+                <input name="model" placeholder="Enter Car Model" type="text">
+
+                <p>Car Year</p>
+                <input name="year" placeholder="Enter Car Year" type="number">
+
+                <p>Car Image</p>
+                <input name="imageUrl" placeholder="Enter Car Image" type="text">
+
+                <p>Car Fuel Type</p>
+                <input name="fuelType" placeholder="Enter Car Fuel Type" type="text">
+
+                <p>Car Price</p>
+                <input name="price" placeholder="Enter Car Price" type="number">
+
+                <hr>
+                <button class="registerbtn" type="submit">Create Listing</button>
+            </div>
+        </form>
+    </div>
+
+    <div id="edit-listing">
+        <form>
+
+            <div class="container">
+                <h1>Edit Car Listing</h1>
+                <p>Please fill in this form to edit an listing.</p>
+                <hr>
+                <input name="carId" type="hidden" value=""/>
+
+                <p>Title</p>
+                <input name="title" placeholder="Enter Title" type="text" value="">
+
+                <p>Description</p>
+                <input name="description" placeholder="Enter Description" type="text" value="">
+
+                <p>Car Brand</p>
+                <input name="brand" placeholder="Enter Car Brand" type="text" value="">
+
+                <p>Car Model</p>
+                <input name="model" placeholder="Enter Car Model" type="text" value="">
+
+                <p>Car Year</p>
+                <input name="year" placeholder="Enter Car Year" type="number" value="">
+
+                <p>Car Image</p>
+                <input name="imageUrl" placeholder="Enter Car Image" type="text" value="">
+
+                <p>Car Fuel Type</p>
+                <input name="fuelType" placeholder="Enter Car Fuel Type" type="text" value="">
+
+                <p>Car Price</p>
+                <input name="price" placeholder="Enter Car Price" type="number" value="">
+
+                <hr>
+                <button class="registerbtn" type="submit">Edit Listing</button>
+            </div>
+        </form>
+    </div>
+
+
+    <div class="my-listings">
+        <h1>My car listings</h1>
+        <div class="car-listings">
+            <div class="my-listing">
+                <p id="listing-title">Audi a3 много запазено</p>
+                <img src="https://i.imgur.com/drIOsYl.jpg">
+
+                <div class="listing-props">
+                    <h2>Brand: Audi</h2>
+                    <h3>Model: a3</h3>
+                    <h3>Year: 1998</h3>
+                    <h3>Price: 2500$</h3>
+                </div>
+                <div class="my-listing-buttons">
+                    <a class="my-button-list" href="#">Details</a>
+                    <a class="my-button-list" href="#">Edit</a>
+                    <a class="my-button-list" href="#">Delete</a>
+                </div>
+            </div>
+            <p class="no-cars"> No cars in database.</p>
+        </div>
+    </div>
+
+    <div class="listing-details">
+        <div class="my-listing-details">
+            <p id="auto-title">Audi a3 много запазено</p>
+            <img src="https://i.imgur.com/drIOsYl.jpg">
+            <div class="listing-props">
+                <h2>Brand: Audi</h2>
+                <h3>Model: a3</h3>
+                <h3>Year: 1998</h3>
+                <h3>Fuel: Gasoline</h3>
+                <h3>Price: 2500$</h3>
+            </div>
+            <div class="listings-buttons">
+
+                <a class="button-list" href="#">Edit</a>
+                <a class="button-list" href="#">Delete</a>
+
+
+            </div>
+            <p id="description-title">Description:</p>
+            <p id="description-para">Не съм навъртал на колата 100000км в никакъв случай. Като нова е</p>
+
+        </div>
+    </div>
+
+
+    <div class="footer">
+        <p>Created by MarikMayhem</p>
+    </div>
+
+</div>
+
+<div id="notifications">
+    <div class="notification" id="loadingBox">
+        <span>Loading …</span>
+    </div>
+    <div class="notification" id="infoBox">
+        <span>Info</span>
+    </div>
+    <div class="notification" id="errorBox">
+        <span>Error</span>
+    </div>
+</div>
+
+</body>
+
+</html>
