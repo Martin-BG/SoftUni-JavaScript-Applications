@@ -1,0 +1,28 @@
+<div class="listing">
+    <p>{{title}}</p>
+    <img src="{{imageUrl}}">
+    <h2>Brand: {{brand}}</h2>
+    <div class="info">
+        <div id="data-info">
+            <h3>Seller: {{seller}}</h3>
+            <h3>Fuel: {{fuel}}</h3>
+            <h3>Year: {{year}}</h3>
+            <h3>Price: {{price}} $</h3>
+        </div>
+        <div id="data-buttons">
+            <ul>
+                <li class="action">
+                    <a class="button-carDetails" href="#/cars/details/{{_id}}">Details</a>
+                </li>
+                {{#if isAuthor}}
+                    <li class="action">
+                        <a class="button-carDetails" href="#/cars/edit/{{_id}}">edit</a>
+                    </li>
+                    <li class="action">
+                        <a class="button-carDetails" href="#/cars/delete/{{_id}}">delete</a>
+                    </li>
+                {{/if}}
+            </ul>
+        </div>
+    </div>
+</div>

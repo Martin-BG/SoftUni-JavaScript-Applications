@@ -1,0 +1,36 @@
+<div id="edit-listing">
+    <form action="#/cars/edit/{{car._id}}" method="put">
+        <div class="container">
+            <h1>Edit Car Listing</h1>
+            <p>Please fill in this form to edit an listing.</p>
+            <hr>
+
+            <p>Title</p>
+            <input name="title" placeholder="Enter Title" type="text" value="{{car.title}}">
+
+            <p>Description</p>
+            <input name="description" placeholder="Enter Description" type="text" value="{{car.description}}">
+
+            <p>Car Brand</p>
+            <input name="brand" placeholder="Enter Car Brand" type="text" value="{{car.brand}}">
+
+            <p>Car Model</p>
+            <input name="model" placeholder="Enter Car Model" type="text" value="{{car.model}}">
+
+            <p>Car Year</p>
+            <input name="year" placeholder="Enter Car Year" type="number" value="{{car.year}}">
+
+            <p>Car Image</p>
+            <input name="imageUrl" placeholder="Enter Car Image" type="text" value="{{car.imageUrl}}">
+
+            <p>Car Fuel Type</p>
+            <input name="fuelType" placeholder="Enter Car Fuel Type" type="text" value="{{car.fuel}}">
+
+            <p>Car Price</p>
+            <input name="price" placeholder="Enter Car Price" type="number" value="{{car.price}}">
+
+            <hr>
+            <button class="registerbtn" type="submit">Edit Listing</button>
+        </div>
+    </form>
+</div>

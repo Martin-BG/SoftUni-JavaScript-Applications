@@ -1,0 +1,21 @@
+<div class="listing-details">
+    <div class="my-listing-details">
+        <p id="auto-title">{{car.title}}</p>
+        <img src="{{car.imageUrl}}">
+        <div class="listing-props">
+            <h2>Brand: {{car.brand}}</h2>
+            <h3>Model: {{car.model}}</h3>
+            <h3>Year: {{car.year}}</h3>
+            <h3>Fuel: {{car.fuel}}</h3>
+            <h3>Price: {{car.price}}$</h3>
+        </div>
+        <div class="listings-buttons">
+            {{#if car.isAuthor}}
+                <a class="button-list" href="#/cars/edit/{{car._id}}">Edit</a>
+                <a class="button-list" href="#/cars/delete/{{car._id}}">Delete</a>
+            {{/if}}
+        </div>
+        <p id="description-title">Description:</p>
+        <p id="description-para">{{car.description}}</p>
+    </div>
+</div>

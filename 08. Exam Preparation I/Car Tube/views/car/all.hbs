@@ -1,0 +1,13 @@
+<div id="car-listings">
+    <h1>Car Listings</h1>
+
+    <div id="listings">
+        {{#if cars}}
+            {{#each cars}}
+                {{> car}}
+            {{/each}}
+        {{else}}
+            <p id="no-cars">No cars in database.</p>
+        {{/if}}
+    </div>
+</div>
