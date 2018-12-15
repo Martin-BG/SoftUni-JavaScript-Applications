@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Amaranth|Courgette');
 
 * {
-    font-family: Amaranth, serif;
+    font-family: Amaranth;
 }
 
 a {
@@ -125,10 +125,11 @@ span, .log-out, .cart {
 
 .single-ticket {
     display: flex;
+    margin: auto;
     background: cornflowerblue;
     padding-bottom: 30px;
     width: 80%;
-    margin: 5px auto auto;
+    margin-top: 5px;
 }
 
 .destination-img {
@@ -196,7 +197,6 @@ span, .log-out, .cart {
     height: 150px;
     padding: 15px;
 }
-
 .total {
     margin: 10px;
 }
@@ -357,7 +357,6 @@ h3 {
 .nav-register {
     text-align: center;
 }
-
 #notifications {
     float: right;
     position: absolute;

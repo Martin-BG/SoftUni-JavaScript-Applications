@@ -1,6 +1,6 @@
 const storage = function () {
-  const appKey = 'kid_ByZQkV4JN';
-  const appSecret = 'a4991b1523544ee29e1e41c809b93ff1';
+  const appKey = 'kid_ByBlX_TyE';
+  const appSecret = 'b692ae865792478fbc792b01679efcc8';
 
   const saveData = function (key, value) {
     localStorage.setItem(appKey + key, JSON.stringify(value));

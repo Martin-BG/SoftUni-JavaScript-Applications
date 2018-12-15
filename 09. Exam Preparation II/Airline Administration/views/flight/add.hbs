@@ -1,0 +1,23 @@
+<section id="viewAddFlight">
+    <h2>Add new flight</h2>
+    <form id="formAddFlight" action="#/flight/add" method="post">
+        <label>Destination:</label>
+        <input name="destination" placeholder="Destination" type="text">
+        <label>Origin:</label>
+        <input name="origin" placeholder="Origin" type="text">
+        <label>Departure Date:</label>
+        <input name="departureDate" type="date">
+        <label>Departure Time:</label>
+        <input name="departureTime" type="time">
+        <label>Number of Seats:</label>
+        <input name="seats" placeholder="0" type="number">
+        <label>Cost per seat:</label>
+        <input name="cost" placeholder="0.00" step="2" type="number">
+        <label>Image:</label>
+        <input name="img" type="text">
+        <label>Is Public:</label>
+        <input name="public" type="checkbox">
+
+        <input class="create" type="submit" value="Create">
+    </form>
+</section>

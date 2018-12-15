@@ -23,8 +23,7 @@ const userModel = (function () {
     const data = {
       username: params.username,
       password: params.password,
-      first_name: params.first_name,
-      last_name: params.last_name
+      checkPass: params.checkPass,
     };
 
     const authString = btoa(`${storage.appKey}:${storage.appSecret}`);

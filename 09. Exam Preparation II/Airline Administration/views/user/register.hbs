@@ -1,0 +1,52 @@
+<section id="viewRegister">
+    <h2>Create your account:</h2>
+    <form id="formRegister" action="#/register" method="post">
+        <label>Username:</label>
+        <input name="username" placeholder="Username" type="text">
+        <div id="registerInvalidUsername"></div>
+        <label>Password:</label>
+        <input name="password" placeholder="Password" type="password">
+        <div id="registerInvalidPassword"></div>
+        <label>Repeat Password:</label>
+        <input name="checkPass" placeholder="Repeat Password" type="password">
+        <div id="registerInvalidCheckPassword"></div>
+        <input class="register" type="submit" value="Register">
+    </form>
+</section>
+
+<script>
+    $(function () {
+        $('#formRegister').on('submit', function (event) {
+            let isValid = true;
+            const $registerInvalidUsername = $('#registerInvalidUsername');
+            const $registerInvalidPassword = $('#registerInvalidPassword');
+            const $registerInvalidCheckPassword = $('#registerInvalidCheckPassword');
+            $registerInvalidUsername.text('');
+            $registerInvalidPassword.text('');
+            $registerInvalidCheckPassword.text('');
+            const username = $('input[name="username"]').val().trim();
+            const password = $('input[name="password"]').val();
+            const checkPass = $('input[name="checkPass"]').val();
+
+            if (username.length < 5) {
+                $registerInvalidUsername.text('At least 5 symbols long');
+                isValid = false;
+            }
+
+            if (password.length === 0) {
+                isValid = false;
+                $registerInvalidPassword.text('Password cannot be empty');
+            }
+
+            if (password !== checkPass) {
+                isValid = false;
+                $registerInvalidCheckPassword.text('Passwords do not match');
+            }
+
+            if (!isValid) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+        });
+    });
+</script>

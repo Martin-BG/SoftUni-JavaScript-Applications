@@ -7,95 +7,36 @@
 </head>
 <body>
 
+<nav>
+    <div class="left-container">
+        <ul>
+            <li><a href="#/">Home</a></li>
+            <li><a href="">Flights</a></li>
+            <li class="hidden-for-logged-user"><a href="#/login">Login</a></li>
+            <li class="hidden-for-logged-user"><a href="#/register">Register</a></li>
+        </ul>
+    </div>
+    <div class="right-container">
+        <div id="right-container">
+            <span>Welcome, <span id="loggedUserName">{name}</span> !</span>
+            <a class="log-out" href="#/logout">Logout</a>
+        </div>
+    </div>
+</nav>
+
+<div id="notifications">
+    <div class="notification" id="loadingBox">
+        <span>Loading …</span>
+    </div>
+    <div class="notification" id="infoBox">
+        <span>Info</span>
+    </div>
+    <div class="notification" id="errorBox">
+        <span>Error</span>
+    </div>
+</div>
+
 <div id="container">
-    <nav>
-        <div class="left-container">
-            <ul>
-                <li><a href="">Home</a></li>
-                <li><a href="">Flights</a></li>
-                <li><a href="">Login</a></li>
-                <li><a href="">Register</a></li>
-            </ul>
-        </div>
-        <div class="right-container">
-            <span>Welcome, {name} |</span>
-            <a class="log-out" href="">Logout</a>
-        </div>
-    </nav>
-
-    <section id="viewRegister">
-        <h2>Create your account:</h2>
-        <form id="formRegister">
-            <label>Username:</label>
-            <input name="username" placeholder="Username" type="text">
-            <label>Password:</label>
-            <input name="pass" placeholder="Password" type="password">
-            <label>Repeat Password:</label>
-            <input name="checkPass" placeholder="Repeat Password" type="password">
-            <input class="register" type="submit" value="Register">
-        </form>
-    </section>
-
-    <section id="viewLogin">
-        <h2>Login to your account:</h2>
-        <form id="formLogin">
-            <label>Username:</label>
-            <input name="username" placeholder="Enter your Email" type="text">
-            <label>Password:</label>
-            <input name="pass" placeholder="Enter your Password" type="password">
-            <input class="login" type="submit" value="Login">
-        </form>
-    </section>
-
-
-    <section class="background-img" id="viewCatalog">
-        <a class="add-flight" href="">Add Flight +</a>
-
-        <div class="added-flights">
-            <a class="added-flight" href="">
-                <img alt="" class="picture-added-flight"
-                     src="http://airportcluj.ro/fisiere/userfiles/Bari_28.03.07_088.jpg">
-                <h3>CLUJ-NAPOCA</h3>
-                <span>from Sheffield</span><span>20 April</span>
-            </a>
-            <a class="added-flight" href="">
-                <img alt="" class="picture-added-flight"
-                     src="http://www.balkaninsight.com/en/file/show/Images/AirportBucharest.jpg">
-                <h3>BUCHAREST</h3>
-                <span>from Larnaka</span><span>21 April</span>
-            </a>
-            <a class="added-flight" href="">
-                <img alt="" class="picture-added-flight"
-                     src="https://dynaimage.cdn.cnn.com/cnn/q_auto,w_602,c_fill,g_auto,h_339,ar_16:9/http%3A%2F%2Fcdn.cnn.com%2Fcnnnext%2Fdam%2Fassets%2F170623115234-heathrow---getty.jpg">
-                <h3>TIMISOARA</h3>
-                <span>from London</span><span>22 April</span>
-            </a>
-        </div>
-    </section>
-
-    <section id="viewAddFlight">
-        <h2>Add new flight</h2>
-        <form id="formAddFlight">
-            <label>Destination:</label>
-            <input name="destination" placeholder="Destination" type="text">
-            <label>Origin:</label>
-            <input name="origin" placeholder="Origin" type="text">
-            <label>Departure Date:</label>
-            <input name="departureDate" type="date">
-            <label>Departure Time:</label>
-            <input name="departureTime" type="time">
-            <label>Number of Seats:</label>
-            <input name="seats" placeholder="0" type="number">
-            <label>Cost per seat:</label>
-            <input name="cost" placeholder="0.00" step="2" type="number">
-            <label>Image:</label>
-            <input name="img" type="text">
-            <label>Is Public:</label>
-            <input name="public" type="checkbox">
-
-            <input class="create" type="submit" value="Create">
-        </form>
-    </section>
 
     <section id="viewFlightDetails">
         <div class="ticket-area">
@@ -179,31 +120,22 @@
     <footer>@SoftUni Airlines</footer>
 </div>
 
-<div id="notifications">
-    <div class="notification" id="loadingBox">
-        <span>Loading …</span>
-    </div>
-    <div class="notification" id="infoBox">
-        <span>Info</span>
-    </div>
-    <div class="notification" id="errorBox">
-        <span>Error</span>
-    </div>
-</div>
-
 <!--<section class="container" id="container"></section>-->
 <script src="static/lib/jquery.min.js"></script>
 <script src="static/lib/handlebars.min.js"></script>
 <script src="static/lib/sammy.min.js"></script>
 <script src="static/lib/sammy.handlebars.min.js"></script>
 <!-- Helpers -->
+<script src="helpers/notification.js"></script>
 <script src="helpers/storage.js"></script>
 <script src="helpers/requester.js"></script>
 <!-- Models -->
 <script src="models/userModel.js"></script>
+<script src="models/flightModel.js"></script>
 <!-- Controllers -->
 <script src="controllers/home.js"></script>
 <script src="controllers/user.js"></script>
+<script src="controllers/flight.js"></script>
 <!-- Router -->
 <script src="app.js"></script>
 </body>

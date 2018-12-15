@@ -1,0 +1,13 @@
+<section class="background-img" id="viewCatalog">
+    <a class="add-flight" href="#/flight/add">Add Flight +</a>
+
+    <div class="added-flights">
+        {{#each flights}}
+            <a class="added-flight" href="">
+                <img alt="" class="picture-added-flight" src="{{image}}">
+                <h3>{{destination}}</h3>
+                <span>from {{origin}}</span><span>{{departure}}</span>
+            </a>
+        {{/each}}
+    </div>
+</section>

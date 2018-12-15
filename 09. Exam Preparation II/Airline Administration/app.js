@@ -10,6 +10,8 @@ const app = Sammy('#container', function () {
   this.get('#/logout', user.logout);
   this.get('#/register', user.getRegister);
   this.post('#/register', user.postRegister);
+  this.get('#/flight/add', flight.addGet);
+  this.post('#/flight/add', flight.addPost);
 });
 
 $(function () {
