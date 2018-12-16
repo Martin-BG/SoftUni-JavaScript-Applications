@@ -1,0 +1,43 @@
+<section class="create">
+    <form action="#/create" method="post">
+        <fieldset>
+            <legend>Add new Pet</legend>
+            <p class="field">
+                <label for="name">Name</label>
+                <span class="input">
+                    <input id="name" name="name" placeholder="Name" type="text"/>
+                    <span class="actions"></span>
+                </span>
+            </p>
+            <p class="field">
+                <label for="description">Description</label>
+                <span class="input">
+                    <textarea cols="45" id="description" name="description"
+                              placeholder="Description" rows="4" type="text"></textarea>
+                    <span class="actions"></span>
+                </span>
+            </p>
+            <p class="field">
+                <label for="image">Image</label>
+                <span class="input">
+                    <input id="image" name="imageURL" placeholder="Image" type="text"/>
+                    <span class="actions"></span>
+                </span>
+            </p>
+            <p class="field">
+                <label for="category">Category</label>
+                <span class="input">
+                    <select id="category" name="category" type="text">
+                        <option>Cat</option>
+                        <option>Dog</option>
+                        <option>Parrot</option>
+                        <option>Reptile</option>
+                        <option>Other</option>
+                    </select>
+                    <span class="actions"></span>
+                </span>
+            </p>
+            <input class="button" type="submit" value="Add Pet"/>
+        </fieldset>
+    </form>
+</section>
