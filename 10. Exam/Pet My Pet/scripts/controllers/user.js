@@ -43,7 +43,7 @@ const user = (() => {
         .done((data) => {
           storage.saveUser(data);
           notification.info('Login successful.');
-          ctx.redirect('#/');
+          ctx.redirect('#/dashboard'); // TODO - Or my-pets???
         })
         .fail(notification.handleError);
     }
@@ -69,7 +69,7 @@ const user = (() => {
         .done((data) => {
           storage.saveUser(data);
           notification.info('User registration successful.');
-          ctx.redirect('#/');
+          ctx.redirect('#/dashboard'); // TODO - Or my-pets???
         })
         .fail(notification.handleError);
     }

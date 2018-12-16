@@ -137,8 +137,43 @@ const pet = (() => {
     petModel
       .del(id)
       .done(() => {
-        notification.info('Listing deleted.');
-        ctx.redirect('#/');
+        notification.info('Pet removed successfully!');
+        ctx.redirect('#/dashboard'); // TODO: Or my-pets???
+      })
+      .fail(notification.handleError);
+  };
+
+  const edit = (ctx) => {
+    const id = ctx.params.id;
+    const description = ctx.params.description;
+    petModel
+      .get(id)
+      .done((pet) => {
+        pet.description = description;
+        petModel
+          .edit(pet, id)
+          .done((data) => {
+            notification.info('Updated successfully!');
+            ctx.redirect('#/dashboard');
+          })
+          .fail(notification.handleError);
+      })
+      .fail(notification.handleError);
+  };
+
+  const likePet = (ctx) => {
+    const id = ctx.params.id;
+    petModel
+      .get(id)
+      .done((pet) => {
+        pet.likes = +pet.likes + 1;
+        petModel
+          .edit(pet, id)
+          .done((data) => {
+            notification.info(`You liked! ${data.name}!`);
+            ctx.redirect('#/dashboard');
+          })
+          .fail(notification.handleError);
       })
       .fail(notification.handleError);
   };
@@ -152,5 +187,7 @@ const pet = (() => {
     details,
     getRemove,
     postRemove,
+    edit,
+    likePet,
   };
 })();

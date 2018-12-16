@@ -29,7 +29,8 @@ $(() => {
 
     this.get('#/details/:id', pet.details);
 
-    // this.get('#/like/:id', pet.likePet);
-    // this.post('#/edit/:id', pet.likePet);
+    this.get('#/like/:id', pet.likePet);
+
+    this.post('#/edit/:id', pet.edit);
   })).run('#/');
 });
