@@ -170,7 +170,7 @@ const pet = (() => {
         petModel
           .edit(pet, id)
           .done((data) => {
-            notification.info(`You liked! ${data.name}!`);
+            notification.info(`You liked ${data.name}!`);
             ctx.redirect('#/dashboard');
           })
           .fail(notification.handleError);
