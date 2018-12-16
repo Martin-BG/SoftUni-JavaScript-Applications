@@ -1,0 +1,24 @@
+{{#if pet.isMyPet}}
+    <section class="detailsMyPet">
+        <h3>{{pet.name}}</h3>
+        <p>Pet counter: <i class="fas fa-heart"></i> {{pet.likes}}</p>
+        <p class="img"><img src="{{pet.imageURL}}">
+        </p>
+        <form action="#/edit/{{pet._id}}" method="POST">
+            <textarea name="description" type="text">{{pet.description}}</textarea>
+            <button class="button"> Save</button>
+        </form>
+    </section>
+{{else}}
+    <section class="detailsOtherPet">
+        <h3>{{pet.name}}</h3>
+        <p>Pet counter: {{pet.likes}} <a href="#/like/{{pet._id}}">
+            <button class="button"><i class="fas fa-heart"></i>
+                Pet
+            </button>
+        </a>
+        </p>
+        <p class="img"><img src="{{pet.imageURL}}"></p>
+        <p class="description">{{pet.description}}</p>
+    </section>
+{{/if}}

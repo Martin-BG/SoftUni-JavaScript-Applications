@@ -1,0 +1,28 @@
+{{#if isMyPet}}
+    <section class="myPet">
+{{else}}
+    <section class="otherPet">
+{{/if}}
+    <h3>Name: {{name}}</h3>
+    <p>Category: {{category}}</p>
+    <p class="img"><img src="{{imageURL}}"></p>
+    <p class="description">{{description}}</p>
+    <div class="pet-info">
+        {{#if isMyPet}}
+            <a href="#/edit/{{_id}}">
+                <button class="button">Edit</button>
+            </a>
+            <a href="#/delete/{{_id}}">
+                <button class="button">Delete</button>
+            </a>
+        {{else}}
+            <a href="#/like/{{_id}}">
+                <button class="button"><i class="fas fa-heart"></i> Pet</button>
+            </a>
+            <a href="#/details/{{_id}}">
+                <button class="button">Details</button>
+            </a>
+        {{/if}}
+        <i class="fas fa-heart"></i> <span>{{likes}}</span>
+    </div>
+</section>

@@ -84,7 +84,6 @@ const pet = (() => {
 
   const postCreate = (ctx) => {
     const pet = parsePet(ctx);
-    console.log(pet);
     if (validatePet(pet)) {
       petModel
         .create(pet)
@@ -96,11 +95,62 @@ const pet = (() => {
     }
   };
 
+  const details = (ctx) => {
+    const id = ctx.params.id;
+    petModel
+      .get(id)
+      .done((pet) => {
+        pet.isMyPet = pet._acl.creator === ctx.id;
+        ctx.pet = pet;
+        ctx.loadPartials({
+          header: './templates/common/header.hbs',
+          footer: './templates/common/footer.hbs',
+          section: './templates/pet/details.hbs'
+        }).then(function () {
+          ctx.partials = this.partials;
+          ctx.partial('./templates/common/main.hbs');
+        });
+      })
+      .fail(notification.handleError);
+  };
+
+  const getRemove = (ctx) => {
+    const id = ctx.params.id;
+    petModel
+      .get(id)
+      .done((pet) => {
+        ctx.pet = pet;
+        ctx.loadPartials({
+          header: './templates/common/header.hbs',
+          footer: './templates/common/footer.hbs',
+          section: './templates/pet/delete.hbs'
+        }).then(function () {
+          ctx.partials = this.partials;
+          ctx.partial('./templates/common/main.hbs');
+        });
+      })
+      .fail(notification.handleError);
+  };
+
+  const postRemove = (ctx) => {
+    const id = ctx.params.id;
+    petModel
+      .del(id)
+      .done(() => {
+        notification.info('Listing deleted.');
+        ctx.redirect('#/');
+      })
+      .fail(notification.handleError);
+  };
+
   return {
     others,
     mine,
     category,
     getCreate,
-    postCreate
+    postCreate,
+    details,
+    getRemove,
+    postRemove,
   };
 })();

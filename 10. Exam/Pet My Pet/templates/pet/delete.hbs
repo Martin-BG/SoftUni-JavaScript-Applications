@@ -1,0 +1,9 @@
+<section class="deletePet">
+    <h3>{{pet.name}}</h3>
+    <p>Pet counter: <i class="fas fa-heart"></i> {{pet.likes}}</p>
+    <p class="img"><img src="{{pet.imageURL}}"></p>
+    <form action="#/delete/{{pet._id}}" method="POST">
+        <p class="description">{{pet.description}}</p>
+        <button class="button">Delete</button>
+    </form>
+</section>
