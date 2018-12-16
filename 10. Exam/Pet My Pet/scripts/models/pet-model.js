@@ -12,7 +12,7 @@ const petModel = (() => {
   };
 
   const others = (userId) => {
-    const endpoint = `${baseEndpoint}?query={"$nor":[{"_acl.creator":"${userId}"}]}&sort={"likes": -1}`;
+    const endpoint = `${baseEndpoint}?query={"$nor":[{"_acl.creator":"${userId}"}]}`;
     return requester.get(endpoint);
   };
 
