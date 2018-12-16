@@ -154,7 +154,7 @@ const pet = (() => {
           .edit(pet, id)
           .done((data) => {
             notification.info('Updated successfully!');
-            ctx.redirect('#/dashboard');
+            ctx.redirect('#/dashboard'); // TODO: Or my-pets???
           })
           .fail(notification.handleError);
       })
