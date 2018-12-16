@@ -1,0 +1,34 @@
+<section class="dashboard">
+    <h1>Dashboard</h1>
+    <nav class="navbar">
+        <ul>
+            <li><a href="#/dashboard">All</a></li>
+            <li><a href="#/pets/Cat">Cats</a></li>
+            <li><a href="#/pets/Dog">Dogs</a></li>
+            <li><a href="#/pets/Parrot">Parrots</a></li>
+            <li><a href="#/pets/Reptile">Reptiles</a></li>
+            <li><a href="#/pets/Other">Other</a></li>
+        </ul>
+    </nav>
+    {{#if pets}}
+        <ul class="other-pets-list">
+            {{#each pets}}
+                <li class="otherPet">
+                    <h3>Name: {{name}}</h3>
+                    <p>Category: {{category}}</p>
+                    <p class="img"><img src="{{imageURL}}"></p>
+                    <p class="description">{{description}}</p>
+                    <div class="pet-info">
+                        <a href="#/like/{{_id}}">
+                            <button class="button"><i class="fas fa-heart"></i> Pet</button>
+                        </a>
+                        <a href="#/details/{{_id}}">
+                            <button class="button">Details</button>
+                        </a>
+                        <i class="fas fa-heart"></i> <span> {{likes}}</span>
+                    </div>
+                </li>
+            {{/each}}
+        </ul>
+    {{/if}}
+</section>
