@@ -1,8 +1,4 @@
-{{#if isMyPet}}
-    <section class="myPet">
-{{else}}
-    <section class="otherPet">
-{{/if}}
+<section class="{{#if isMyPet}}myPet{{else}}otherPet{{/if}}">
     <h3>Name: {{name}}</h3>
     <p>Category: {{category}}</p>
     <p class="img"><img src="{{imageURL}}"></p>
