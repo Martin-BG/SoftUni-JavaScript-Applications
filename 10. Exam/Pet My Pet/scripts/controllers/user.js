@@ -51,7 +51,7 @@ const user = (() => {
 
   const logout = (ctx) => {
     userModel
-      .logout({authtoken: storage.authToken()})
+      .logout()
       .done(() => {
         storage.clearUser();
         notification.info('Logout successful.');
