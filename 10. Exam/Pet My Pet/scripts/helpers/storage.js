@@ -1,9 +1,9 @@
 const storage = (() => {
   const storage = sessionStorage;
   const prefix = 'user_';
-  const keyUsername = prefix + 'name';
-  const keyUserId = prefix + 'id';
-  const keyAuthToken = prefix + 'token';
+  const keyUsername = 'name';
+  const keyUserId = 'id';
+  const keyAuthToken = 'token';
 
   const buildKey = (key) => prefix + key;
   const set = (key, value) => storage.setItem(buildKey(key), JSON.stringify(value));
