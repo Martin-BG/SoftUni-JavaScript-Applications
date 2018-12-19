@@ -58,7 +58,7 @@ const pet = (() => {
     petModel
       .category(category)
       .done((pets) => {
-        ctx.pets = pets.filter(pet => pet._acl.creator !== ctx.id); // TODO - use query selector to Kinvey!!!
+        ctx.pets = pets.filter(pet => pet._acl.creator !== ctx.id);
         ctx.loadPartials({
           header: './templates/common/header.hbs',
           footer: './templates/common/footer.hbs',
@@ -87,9 +87,9 @@ const pet = (() => {
     if (validatePet(pet)) {
       petModel
         .create(pet)
-        .done((data) => {
+        .done(() => {
           notification.info('Pet created.');
-          ctx.redirect('#/dashboard'); // TODO: Or my-pets or new pet details ???
+          ctx.redirect('#/dashboard');
         })
         .fail(notification.handleError);
     }
@@ -138,7 +138,7 @@ const pet = (() => {
       .del(id)
       .done(() => {
         notification.info('Pet removed successfully!');
-        ctx.redirect('#/dashboard'); // TODO: Or my-pets???
+        ctx.redirect('#/dashboard');
       })
       .fail(notification.handleError);
   };
@@ -154,7 +154,7 @@ const pet = (() => {
           .edit(pet, id)
           .done((data) => {
             notification.info('Updated successfully!');
-            ctx.redirect('#/dashboard'); // TODO: Or my-pets???
+            ctx.redirect('#/dashboard');
           })
           .fail(notification.handleError);
       })
