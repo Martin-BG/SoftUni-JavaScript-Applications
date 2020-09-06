@@ -2,7 +2,7 @@
   "name": "Exam",
   "version": "1.0.0",
   "dependencies": {
-    "handlebars": "^4.3.0",
+    "handlebars": "^4.5.3",
     "jquery": "^3.5.0",
     "sammy": "^0.7.6"
   }
